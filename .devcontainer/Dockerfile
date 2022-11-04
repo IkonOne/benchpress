@@ -25,5 +25,5 @@ RUN if [ "${REINSTALL_CMAKE_VERSION_FROM_SOURCE}" != "none" ]; then \
 RUN apt update
 
 # install perf
-RUN apt install linux-perf
+RUN apt install -y linux-perf
 RUN ln -s /usr/bin/perf_5.10 /usr/bin/perf_4.19
