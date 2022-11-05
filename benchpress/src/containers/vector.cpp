@@ -2,24 +2,24 @@
 
 #include <vector>
 
-static void BM_vector_creation(benchmark::State& state) {
+static void bench_vector_creation(benchmark::State& state) {
     for (auto _ : state) {
         std::vector<int> v{42};
         benchmark::DoNotOptimize(&v);
     }
 }
-BENCHMARK(BM_vector_creation);
+BENCHMARK(bench_vector_creation);
 
-static void BM_vector_reserve(benchmark::State& state) {
+static void bench_vector_reserve(benchmark::State& state) {
     for (auto _ : state) {
         std::vector<int> v;
         v.reserve(state.range(0));
         benchmark::DoNotOptimize(v.data());
     }
 }
-BENCHMARK(BM_vector_reserve)->Range(1, 1024);
+BENCHMARK(bench_vector_reserve)->Range(1, 1024);
 
-static void BM_vector_push_back(benchmark::State& state) {
+static void bench_vector_push_back(benchmark::State& state) {
     for (auto _ : state) {
         std::vector<int> v;
         for (int i = 0; i < state.range(0); ++i ) {
@@ -29,9 +29,9 @@ static void BM_vector_push_back(benchmark::State& state) {
         benchmark::ClobberMemory();
     }
 }
-BENCHMARK(BM_vector_push_back)->Range(1, 1024);
+BENCHMARK(bench_vector_push_back)->Range(1, 1024);
 
-static void BM_vector_reserve_push_back(benchmark::State& state) {
+static void bench_vector_reserve_push_back(benchmark::State& state) {
     for (auto _ : state) {
         std::vector<int> v;
         v.reserve(state.range(0));
@@ -42,9 +42,9 @@ static void BM_vector_reserve_push_back(benchmark::State& state) {
         benchmark::ClobberMemory();
     }
 }
-BENCHMARK(BM_vector_reserve_push_back)->Range(1, 1024);
+BENCHMARK(bench_vector_reserve_push_back)->Range(1, 1024);
 
-static void BM_vector_over_reserve_push_back(benchmark::State& state) {
+static void bench_vector_over_reserve_push_back(benchmark::State& state) {
     for (auto _ : state) {
         std::vector<int> v;
         v.reserve(state.range(0)*state.range(1));
@@ -54,4 +54,4 @@ static void BM_vector_over_reserve_push_back(benchmark::State& state) {
         benchmark::DoNotOptimize(v.data());
     }
 }
-BENCHMARK(BM_vector_over_reserve_push_back)->RangePair(1, 1024, 1, 32);
+BENCHMARK(bench_vector_over_reserve_push_back)->RangePair(1, 1024, 1, 32);
