@@ -28,7 +28,7 @@ static void bench_unordered_map_find(benchmark::State& state) {
             m.insert({i, i});
         }
         auto val = m.find(state.range(0) / 2);
-        benchmark::DoNotOptimize(val);
+        benchmark::DoNotOptimize(&val);
     }
 }
 BENCHMARK(bench_unordered_map_find)->RangeMultiplier(2)->Range(8, 4096);
