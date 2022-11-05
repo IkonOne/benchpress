@@ -50,4 +50,4 @@ static void bench_dense_map_find(benchmark::State& state) {
         benchmark::DoNotOptimize(val);
     }
 }
-BENCHMARK(bench_dense_map_find)->RangeMultiplier(2)->Range(8, 4096);
+BENCHMARK(bench_dense_map_find)->RangeMultiplier(2)->Range(8, 2<<16);
