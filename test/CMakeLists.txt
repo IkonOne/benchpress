@@ -8,3 +8,8 @@ add_executable(
 )
 
 target_link_libraries(benchpress_tests GTest::gtest_main bplib)
+
+add_test(
+    NAME benchpress_ctest
+    COMMAND benchpress_tests
+)
